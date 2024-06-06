@@ -8,9 +8,9 @@ import {
   index,
   integer,
   pgTableCreator,
+  primaryKey,
   real,
   serial,
-  text,
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
@@ -54,6 +54,7 @@ export const upcTable = createTable("upc", {
 
 export const upcsRelations = relations(upcTable, ({ many }) => ({
   batchesToUpcsTable: many(batchesToUpcsTable),
+  varietiesTable: many(varietiesTable),
 }));
 
 export const batchesToUpcsTable = createTable("batchUpc", {
@@ -85,3 +86,29 @@ export const batchesToUpcsRelations = relations(
     }),
   }),
 );
+
+export const varietiesTable = createTable(
+  "varietiesTable",
+  {
+    upcId: bigint("upcId", { mode: "number" })
+      .references(() => upcTable.id)
+      .notNull(),
+    variety: bigint("upcId", { mode: "number" })
+      .references(() => upcTable.id)
+      .notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.upcId, table.variety] }),
+  }),
+);
+
+export const varietiesRelations = relations(varietiesTable, ({ one }) => ({
+  upc: one(upcTable, {
+    fields: [varietiesTable.upcId],
+    references: [upcTable.id],
+  }),
+  variety: one(upcTable, {
+    fields: [varietiesTable.variety],
+    references: [upcTable.id],
+  }),
+}));

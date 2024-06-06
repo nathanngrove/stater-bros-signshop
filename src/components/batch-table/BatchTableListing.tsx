@@ -2,7 +2,7 @@ import React from "react";
 import Checkbox from "./Checkbox";
 import TableData from "../TableData";
 
-type UPC = {
+export type UPC = {
   id: number;
   name: string;
   size: string;

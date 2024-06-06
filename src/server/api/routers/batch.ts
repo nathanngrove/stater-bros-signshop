@@ -8,9 +8,12 @@ export const batchRouter = createTRPCRouter({
   createBatch: publicProcedure
     .input(z.object({ name: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
-      await ctx.db.insert(batchTable).values({
-        name: input.name,
-      });
+      await ctx.db
+        .insert(batchTable)
+        .values({
+          name: input.name,
+        })
+        .returning({ batchId: batchTable.id });
     }),
   getAllBatches: publicProcedure.query(async ({ ctx }) => {
     return await ctx.db

@@ -1,5 +1,5 @@
-import { CreateBatch } from "~/app/_components/create-batch";
 import BatchList from "~/components/batch-list/BatchList";
+import CreateBatch from "./_components/create-batch";
 
 export default function Home() {
   return (

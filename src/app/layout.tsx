@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} flex min-h-screen min-w-full flex-col items-center font-sans`}
+        className={`${inter.variable} flex min-h-screen min-w-full flex-col items-center font-sans font-sans`}
       >
         <TRPCReactProvider>
           <div className="w-11/12 lg:w-9/12">

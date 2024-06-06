@@ -10,7 +10,9 @@ function UPCTableListing({ name, id }: UPCTableListingProps) {
   return (
     <tr>
       <UPCTableData>{name}</UPCTableData>
-      <UPCTableData>{id}</UPCTableData>
+      <UPCTableData>
+        <div className="font-mono">{id}</div>
+      </UPCTableData>
     </tr>
   );
 }
