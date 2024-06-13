@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Viewer from "~/components/Viewer";
+import Viewer from "~/components/print-page/Viewer";
 
 export default function HomePage() {
   return (
